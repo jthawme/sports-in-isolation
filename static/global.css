@@ -1,0 +1,27 @@
+:root {
+  --body-font-family: "Cormorant Garamond", serif;
+
+  --font-size-small: 13px;
+  --font-size-regular: 16px;
+  --font-size-large: 24px;
+
+  --color-text: #000;
+  --color-accent: #f00;
+  --color-light-text: #acacac;
+  --color-bg-grey: #e5e5e5;
+
+  --size-radii: 4px;
+
+  --page-padding: 48px;
+}
+
+body {
+  font-family: var(--body-font-family);
+  font-size: var(--font-size-regular);
+
+  line-height: 1.5;
+
+  color: var(--color-text);
+
+  padding: 0 var(--page-padding);
+}
