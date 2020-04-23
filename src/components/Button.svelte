@@ -71,7 +71,7 @@
   }
 </style>
 
-<button class:hasIcon={!!icon}>
+<button class:hasIcon={!!icon} on:click|preventDefault>
   {#if icon}
     <span class="icon">
       <svelte:component this={getIconComponent(icon)} />

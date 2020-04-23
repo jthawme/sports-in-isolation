@@ -1,5 +1,7 @@
 <script>
   import IoIosMusicalNotes from "svelte-icons/io/IoIosMusicalNotes.svelte";
+  // import JSZip from "jszip";
+  // import saveAs from "file-saver";
 
   import Button from "./Button.svelte";
 
@@ -7,6 +9,31 @@
   export let title;
   export let info;
   export let song;
+  export let onPlayState = () => {};
+  export let playing;
+  export let parts = [];
+
+  function onTogglePlay() {
+    onPlayState(!playing);
+  }
+
+  function download() {
+    // const zip = new JSZip();
+    // const sounds = zip.folder("sounds");
+    // Promise.all(
+    //   parts
+    //     .map(p => fetch(p.file.audio).then(r => r.blob()))
+    //     .then(blobs => {
+    //       blobs.forEach((blob, index) => {
+    //         sounds.file(`${parts[index].title}.mp3`, blob);
+    //         zip.generateAsync({ type: "blob" }).then(function(content) {
+    //           // see FileSaver.js
+    //           saveAs(content, `${number}-${title}.zip`);
+    //         });
+    //       });
+    //     })
+    // );
+  }
 </script>
 
 <style>
@@ -173,10 +200,15 @@
   </header>
   <div class="actions">
     <div class="left">
-      <Button text="Play" icon="play" />
+      <Button
+        text="Play"
+        icon={playing ? 'pause' : 'play'}
+        on:click={onTogglePlay} />
     </div>
     <div class="right">
-      <Button text="Download" icon="download" />
+      {#if parts.length}
+        <Button text="Download" icon="download" on:click={download} />
+      {/if}
       <Button text="Add instrument" icon="add" />
     </div>
   </div>

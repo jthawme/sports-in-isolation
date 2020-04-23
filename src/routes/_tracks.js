@@ -1,8 +1,16 @@
+const getFile = (song, file) => {
+  return {
+    audio: `/songs/${song}/${file}.mp3`,
+    active: `/songs/${song}/images/${file}-active.png`,
+    idle: `/songs/${song}/images/${file}-idle.png`
+  };
+};
+
 const tracks = [
   {
     number: 1,
     title: "Re-Do",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=6rgbYAZeZJI",
       image: "redo.jpg"
@@ -11,7 +19,7 @@ const tracks = [
   {
     number: 2,
     title: "Tears Over Beers",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=kxViktJCHlg",
       image: "tearsoverbeers.jpg"
@@ -20,7 +28,7 @@ const tracks = [
   {
     number: 3,
     title: "The Weekend",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=cIy2wyEV0qc",
       image: "theweekend.jpg"
@@ -29,7 +37,7 @@ const tracks = [
   {
     number: 4,
     title: "@chl03k",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=mQsV5-O5ZtI",
       image: "chl03k.jpg"
@@ -38,7 +46,7 @@ const tracks = [
   {
     number: 5,
     title: "Hours Outside in the Snow",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=OWFvYXmlfmQ",
       image: "hoursoutside.jpg"
@@ -47,7 +55,7 @@ const tracks = [
   {
     number: 6,
     title: "I Think You Were In My Profile Picture Once",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=QpYykHrG3LI",
       image: "profilepicture.jpg"
@@ -56,7 +64,7 @@ const tracks = [
   {
     number: 7,
     title: "Re-Done",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=vwVMhvH4KKI",
       image: "redone.jpg"
@@ -65,16 +73,38 @@ const tracks = [
   {
     number: 8,
     title: "Cooke",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "115bpm – Tuned 1/2 step down - G/C/Em",
     song: {
       link: "https://www.youtube.com/watch?v=4hxRRAWffVk",
       image: "cooke.jpg"
-    }
+    },
+    parts: [
+      {
+        title: "Metronome",
+        file: getFile("08cooke", "metronome"),
+        muted: true
+      },
+      {
+        title: "Guitar 1",
+        file: getFile("08cooke", "guitar1"),
+        muted: false
+      },
+      {
+        title: "Guitar 2",
+        file: getFile("08cooke", "guitar2"),
+        muted: false
+      },
+      {
+        title: "Guitar 3",
+        file: getFile("08cooke", "guitar3"),
+        muted: false
+      }
+    ]
   },
   {
     number: 9,
     title: "See Ya, Sucker",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=mhFBV1Nmq2c",
       image: "seeyasucker.jpg"
@@ -83,7 +113,7 @@ const tracks = [
   {
     number: 10,
     title: "Look Out",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=EpBS17K-KPQ",
       image: "lookout.jpg"
@@ -92,7 +122,7 @@ const tracks = [
   {
     number: 11,
     title: "Play Ball!",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=zyxf4TqUCFk",
       image: "playball.jpg"
@@ -101,7 +131,7 @@ const tracks = [
   {
     number: 12,
     title: "Coals",
-    info: "120bpm – Eb major – Tuned 1/2 step down",
+    info: "",
     song: {
       link: "https://www.youtube.com/watch?v=M4wXqWEaU94",
       image: "coals.gif"

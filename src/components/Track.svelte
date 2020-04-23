@@ -1,10 +1,21 @@
 <script>
+  import { trackPlaying } from "../stores/player";
   import TrackInfo from "./TrackInfo.svelte";
+  import TrackPlayer from "./TrackPlayer.svelte";
 
   export let number;
   export let title;
   export let info;
   export let song;
+  export let parts = [];
+
+  function onPlayState(state) {
+    if (state) {
+      trackPlaying.set(number);
+    } else {
+      trackPlaying.set(false);
+    }
+  }
 </script>
 
 <style>
@@ -14,17 +25,16 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
   }
-
-  .track {
-    grid-column: 5 / span 8;
-    border-radius: var(--size-radii);
-    background-color: var(--color-bg-grey);
-
-    align-self: flex-start;
-  }
 </style>
 
 <div class="wrapper">
-  <TrackInfo {number} {title} {info} {song} />
-  <div class="track">hey</div>
+  <TrackInfo
+    {number}
+    {title}
+    {info}
+    {song}
+    {onPlayState}
+    playing={$trackPlaying === number}
+    {parts} />
+  <TrackPlayer {parts} playing={$trackPlaying === number} />
 </div>

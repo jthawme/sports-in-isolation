@@ -36,6 +36,16 @@
   .content a:focus {
     color: var(--color-accent);
   }
+
+  footer {
+    padding: 20px 0 50px;
+
+    color: var(--color-light-text);
+  }
+
+  footer a {
+    color: var(--color-accent);
+  }
 </style>
 
 <header>
@@ -97,3 +107,13 @@
 </header>
 
 <slot />
+
+<footer>
+  <p>
+    This by-no-means-flawless site was made by
+    <a href="https://jthaw.me" target="_blank" rel="noreferrer noopener">
+      jthaw.me.
+    </a>
+    Its about the music ya dingus
+  </p>
+</footer>
