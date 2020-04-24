@@ -95,11 +95,17 @@
   section {
     position: relative;
 
-    grid-column: 5 / span 8;
+    grid-column: 1 / span 4;
     border-radius: var(--size-radii);
     background-color: var(--color-bg-grey);
 
     align-self: flex-start;
+  }
+
+  @media screen and (min-width: 768px) {
+    section {
+      grid-column: 5 / span 8;
+    }
   }
 
   .track {
@@ -115,22 +121,6 @@
     /* object-fit: contain;
     object-position: center left; */
   }
-
-  /* .track:before {
-    position: absolute;
-
-    content: "";
-
-    width: 100%;
-    height: 1px;
-
-    top: 50%;
-    left: 0;
-
-    background-color: var(--color-accent);
-
-    transform: translate3d(0, -50%, 0);
-  } */
 
   .label {
     position: absolute;

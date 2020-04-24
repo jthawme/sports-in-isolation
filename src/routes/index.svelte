@@ -15,7 +15,13 @@
 
 <style>
   main > :global(div) {
-    margin-bottom: 64px;
+    margin-bottom: 96px;
+  }
+
+  @media screen and (min-width: 768px) {
+    main > :global(div) {
+      margin-bottom: 64px;
+    }
   }
 </style>
 

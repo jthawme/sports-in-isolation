@@ -7,7 +7,9 @@
   export let title;
   export let info;
   export let song;
+  export let download;
   export let parts = [];
+  export let collaborators = [];
 
   function onPlayState(state) {
     if (state) {
@@ -22,8 +24,14 @@
   .wrapper {
     display: grid;
 
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .wrapper {
+      grid-template-columns: repeat(12, 1fr);
+    }
   }
 </style>
 
@@ -34,7 +42,9 @@
     {info}
     {song}
     {onPlayState}
+    {download}
     playing={$trackPlaying === number}
-    {parts} />
+    {parts}
+    {collaborators} />
   <TrackPlayer {parts} playing={$trackPlaying === number} />
 </div>

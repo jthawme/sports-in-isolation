@@ -1,9 +1,10 @@
 <script>
+  import { getContext } from "svelte";
   import IoIosMusicalNotes from "svelte-icons/io/IoIosMusicalNotes.svelte";
-  // import JSZip from "jszip";
-  // import saveAs from "file-saver";
-
+  import TrackAdd from "./TrackAdd.svelte";
   import Button from "./Button.svelte";
+
+  const { open } = getContext("simple-modal");
 
   export let number;
   export let title;
@@ -12,33 +13,27 @@
   export let onPlayState = () => {};
   export let playing;
   export let parts = [];
+  export let download;
+  export let collaborators = [];
 
   function onTogglePlay() {
     onPlayState(!playing);
   }
 
-  function download() {
-    // const zip = new JSZip();
-    // const sounds = zip.folder("sounds");
-    // Promise.all(
-    //   parts
-    //     .map(p => fetch(p.file.audio).then(r => r.blob()))
-    //     .then(blobs => {
-    //       blobs.forEach((blob, index) => {
-    //         sounds.file(`${parts[index].title}.mp3`, blob);
-    //         zip.generateAsync({ type: "blob" }).then(function(content) {
-    //           // see FileSaver.js
-    //           saveAs(content, `${number}-${title}.zip`);
-    //         });
-    //       });
-    //     })
-    // );
+  function addTrack() {
+    open(TrackAdd, { title });
   }
 </script>
 
 <style>
   section {
     grid-column: 1 / span 4;
+  }
+
+  @media screen and (min-width: 768px) {
+    section {
+      grid-column: 1 / span 4;
+    }
   }
 
   header {
@@ -178,6 +173,30 @@
   footer p {
     margin: 0;
   }
+
+  h3 {
+    font-size: var(--font-size-small);
+    font-weight: normal;
+
+    margin: 30px 0 0;
+  }
+
+  .collaborators {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  .collaborators li {
+    margin-bottom: 5px;
+  }
 </style>
 
 <section>
@@ -200,19 +219,32 @@
   </header>
   <div class="actions">
     <div class="left">
-      <Button
-        text="Play"
-        icon={playing ? 'pause' : 'play'}
-        on:click={onTogglePlay} />
+      {#if parts.length}
+        <Button
+          text="Play"
+          icon={playing ? 'pause' : 'play'}
+          on:click={onTogglePlay} />
+      {/if}
     </div>
     <div class="right">
       {#if parts.length}
-        <Button text="Download" icon="download" on:click={download} />
+        <Button text="Download" icon="download" to={download} />
       {/if}
-      <Button text="Add instrument" icon="add" />
+      <Button text="Add instrument" icon="add" on:click={addTrack} />
     </div>
   </div>
   <footer>
     <p>{info}</p>
+
+    {#if collaborators.length}
+      <h3>Collaborators</h3>
+      <ul class="collaborators">
+        {#each collaborators as person}
+          <li>
+            <Button text={person.name} small to={person.link} />
+          </li>
+        {/each}
+      </ul>
+    {/if}
   </footer>
 </section>

@@ -83,7 +83,7 @@ export default {
         dev
       }),
       resolve({
-        dedupe: ["svelte"]
+        dedupe: ["svelte", "svelte/transition", "svelte/internal"]
       }),
       commonjs()
     ],

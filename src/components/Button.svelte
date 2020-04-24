@@ -27,11 +27,13 @@
 <script>
   export let icon;
   export let text;
+  export let to;
 </script>
 
 <style>
-  button {
-    display: flex;
+  button,
+  a {
+    display: inline-flex;
 
     align-items: center;
 
@@ -46,11 +48,19 @@
     font-size: var(--font-size-regular);
     font-weight: bold;
 
+    background-color: transparent;
+
     cursor: pointer;
+
+    text-decoration: none;
+
+    color: var(--color-text);
   }
 
   button:hover,
-  button:focus {
+  button:focus,
+  a:hover,
+  a:focus {
     color: var(--color-accent);
     border-bottom: 1px solid var(--color-accent);
 
@@ -71,12 +81,24 @@
   }
 </style>
 
-<button class:hasIcon={!!icon} on:click|preventDefault>
-  {#if icon}
-    <span class="icon">
-      <svelte:component this={getIconComponent(icon)} />
-    </span>
-  {/if}
+{#if to}
+  <a href={to} target="_blank" class:hasIcon={!!icon}>
+    {#if icon}
+      <span class="icon">
+        <svelte:component this={getIconComponent(icon)} />
+      </span>
+    {/if}
 
-  <span class="text">{text}</span>
-</button>
+    <span class="text">{text}</span>
+  </a>
+{:else}
+  <button class:hasIcon={!!icon} on:click|preventDefault>
+    {#if icon}
+      <span class="icon">
+        <svelte:component this={getIconComponent(icon)} />
+      </span>
+    {/if}
+
+    <span class="text">{text}</span>
+  </button>
+{/if}
