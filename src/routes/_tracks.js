@@ -161,13 +161,26 @@ const tracks = [
   {
     number: 12,
     title: "Coals",
-    info: "",
+    info: "110bpm – Capo on 3rd (if you want)",
     download:
       "https://drive.google.com/drive/folders/1OtCHNfUhQfHPpoar3UjzOIgFUGYc4uqN?usp=sharing",
     song: {
       link: "https://www.youtube.com/watch?v=M4wXqWEaU94",
       image: "coals.gif"
-    }
+    },
+    parts: [
+      {
+        title: "Metronome",
+        file: getFile("12coals", "metronome"),
+        muted: true
+      },
+      {
+        title: "Guitar 1",
+        file: getFile("12coals", "guitar1"),
+        muted: false
+      }
+    ],
+    collaborators: [people.jonny]
   }
 ];
 
